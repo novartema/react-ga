@@ -58,6 +58,10 @@ var _initialize = function (gaTrackingID, options) {
 
   if (options && options.gaOptions) {
     ga('create', gaTrackingID, options.gaOptions);
+  } else if (options && options.allowLinker === true) {
+    ga('create', gaTrackingID, 'auto', {'allowLinker': true});
+    ga('require', 'linker');
+    ga('linker:autoLink', options.domains);  
   } else {
     ga('create', gaTrackingID, 'auto');
   }
